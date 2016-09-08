@@ -1,11 +1,3 @@
-//
-//  RecordingViewController.swift
-//  Larynx Tweaker
-//
-//  Created by Pushkar Sharma on 08/09/2016.
-//  Copyright © 2016 thePsguy. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 
@@ -23,32 +15,11 @@ class RecordingViewController: UIViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func recordTapped(sender: AnyObject) {
-        recordButton.enabled = false
-        stopButton.enabled = true
-        recordLabel.text = "Recording.."
+        recordingActive(true)
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         
@@ -69,21 +40,26 @@ class RecordingViewController: UIViewController {
     }
     
     @IBAction func stopTapped(sender: AnyObject) {
-        recordButton.enabled = true
-        stopButton.enabled = false
-        recordLabel.text = "Processing.."
+        recordingActive(false)
         
         recorder.stop()
         let session = AVAudioSession.sharedInstance()
         try! session.setActive(false)
     }
+    
+    func recordingActive(state: Bool){
+        recordButton.enabled = !state
+        stopButton.enabled = state
+        recordLabel.text = state == true ?"Recording":"Processing.."
+    }
+    
 }
 
 extension RecordingViewController: AVAudioRecorderDelegate {
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-        if (flag){
-            self.performSegueWithIdentifier("stopRecording", sender: recorder.url)
+        if flag {
+            performSegueWithIdentifier("stopRecording", sender: recorder.url)
         }else{
             recordLabel.text = "Recording Failed."
         }

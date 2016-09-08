@@ -17,7 +17,9 @@ class PlaySoundsViewController: UIViewController {
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: NSTimer!
     
-    enum ButtonType: Int {case Slow = 0, Fast, Chipmunk, Vader, Echo, Reverb}
+    enum ButtonType: Int {
+        case Slow = 0, Fast, Chipmunk, Vader, Echo, Reverb
+    }
 
     @IBOutlet weak var snailButton: UIButton!
     @IBOutlet weak var chipmunkButton: UIButton!
@@ -45,7 +47,7 @@ class PlaySoundsViewController: UIViewController {
         case .Slow:
             playSound(rate: 0.5)
         case .Fast:
-            playSound(rate: 1.5)
+            playSound(rate: 1.5)    
         case .Chipmunk:
             playSound(pitch: 1000)
         case .Vader:
@@ -68,20 +70,7 @@ class PlaySoundsViewController: UIViewController {
         configureUI(.NotPlaying)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
