@@ -70,7 +70,4 @@ class PlaySoundsViewController: UIViewController {
         configureUI(.NotPlaying)
     }
 
-    /*
-    // MARK: - Navigation
-
 }

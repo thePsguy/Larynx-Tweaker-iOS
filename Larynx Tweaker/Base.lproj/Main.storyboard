@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRx-Vj-1rZ">
-                                <rect key="frame" x="263" y="488" width="75" height="75"/>
-                                <state key="normal" image="red_50"/>
-                                <connections>
-                                    <action selector="stopTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wgk-do-shc"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting to record." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8s-mD-Xx9">
                                 <rect key="frame" x="232" y="571" width="136" height="21"/>
                                 <constraints>
@@ -35,27 +28,50 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-hr-rq5">
-                                <rect key="frame" x="225" y="225" width="150" height="150"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="if4-z0-Pi2">
+                                <rect key="frame" x="225" y="164" width="150" height="387"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-hr-rq5">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="G5k-yX-oNC"/>
+                                            <constraint firstAttribute="width" constant="150" id="fEV-B1-xrc"/>
+                                        </constraints>
+                                        <state key="normal" image="mic-icon"/>
+                                        <connections>
+                                            <action selector="recordTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nJ7-0k-NS9"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pqt-ZS-rQA">
+                                        <rect key="frame" x="0.0" y="312" width="150" height="75"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRx-Vj-1rZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="75"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="75" id="HMe-bd-Opi"/>
+                                                    <constraint firstAttribute="height" constant="75" id="JEo-6c-btN"/>
+                                                </constraints>
+                                                <state key="normal" image="red_50"/>
+                                                <connections>
+                                                    <action selector="stopTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wgk-do-shc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Bvr-jf-yTm"/>
-                                    <constraint firstAttribute="height" constant="150" id="yv5-kF-DHW"/>
+                                    <constraint firstItem="pqt-ZS-rQA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1WK-hr-rq5" secondAttribute="bottom" constant="50" id="3Jl-jl-yFk"/>
                                 </constraints>
-                                <state key="normal" image="mic-icon"/>
-                                <connections>
-                                    <action selector="recordTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nJ7-0k-NS9"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.36131897636182175" green="0.42740327339758238" blue="0.55128205128205132" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="1WK-hr-rq5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1O2-Ov-b1m"/>
-                            <constraint firstItem="z8s-mD-Xx9" firstAttribute="top" secondItem="pRx-Vj-1rZ" secondAttribute="bottom" constant="8" symbolic="YES" id="OhN-Ed-TLD"/>
-                            <constraint firstItem="1WK-hr-rq5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cTv-yz-Z5W"/>
-                            <constraint firstItem="pRx-Vj-1rZ" firstAttribute="centerX" secondItem="1WK-hr-rq5" secondAttribute="centerX" id="d8a-pT-dx7"/>
-                            <constraint firstAttribute="bottom" secondItem="pRx-Vj-1rZ" secondAttribute="bottom" constant="37" id="fit-BP-Fa4"/>
-                            <constraint firstItem="pRx-Vj-1rZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1WK-hr-rq5" secondAttribute="bottom" constant="54" id="kMV-Mm-33K"/>
-                            <constraint firstItem="pRx-Vj-1rZ" firstAttribute="centerX" secondItem="z8s-mD-Xx9" secondAttribute="centerX" id="m4n-y5-Wz3"/>
+                            <constraint firstItem="z8s-mD-Xx9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EkF-kg-SQc"/>
+                            <constraint firstItem="1WK-hr-rq5" firstAttribute="top" relation="lessThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="FlE-iP-kjQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="z8s-mD-Xx9" secondAttribute="bottom" constant="8" id="Jsg-op-TTc"/>
+                            <constraint firstItem="if4-z0-Pi2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hjG-sX-kUs"/>
+                            <constraint firstItem="z8s-mD-Xx9" firstAttribute="top" secondItem="if4-z0-Pi2" secondAttribute="bottom" constant="20" id="leJ-dC-2j8"/>
+                            <constraint firstItem="if4-z0-Pi2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="ycJ-FM-4bE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pitch Perfect" id="Fel-bZ-Wfz"/>
